@@ -21,8 +21,8 @@ metadata:
   name: kind-of-cool-frontend
   description: Not as cool frontend.
   annotations:
-    "backstage.io/kubernetes-id": super-cool-backend
-    "backstage.io/kubernetes-label-selector": app=super-cool-backend
+    "backstage.io/kubernetes-id": kind-of-cool-frontend
+    "backstage.io/kubernetes-label-selector": app=kind-of-cool-frontend
     "backstage.io/kubernetes-namespace": default
   tags:
     - frontend
