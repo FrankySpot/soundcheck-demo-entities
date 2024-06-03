@@ -11,7 +11,7 @@ metadata:
     - backend
 spec:
   type: service
-  lifecycle: experimental
+  lifecycle: production
   owner: toast-infra
   system: cool-system
 ---
@@ -28,7 +28,7 @@ metadata:
     - frontend
 spec:
   type: website
-  lifecycle: experimental
+  lifecycle: production
   owner: toast-infra
   dependsOn: [super-cool-backend]
   system: cool-system
