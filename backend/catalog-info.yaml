@@ -6,7 +6,7 @@ metadata:
   annotations:
     "backstage.io/kubernetes-id": super-cool-backend
     "backstage.io/kubernetes-label-selector": app=super-cool-backend
-    "backstage.io/kubernetes-namespace": defaul
+    "backstage.io/kubernetes-namespace": default
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
   tags:
     - backend
