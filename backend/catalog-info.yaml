@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: super-cool-backend
+  description: A super cool and totally not fake backend system.
+  annotations:
+    "backstage.io/kubernetes-id": super-cool-backend
+    "backstage.io/kubernetes-label-selector": app=super-cool-backend
+    "backstage.io/kubernetes-namespace": defaul
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - backend
+spec:
+  type: service
+  lifecycle: production
+  owner: toast-infra
+  system: cool-system
