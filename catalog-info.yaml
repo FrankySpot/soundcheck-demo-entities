@@ -1,0 +1,42 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: super-cool-backend
+  description: A super cool and totally not fake backend system.
+  annotations:
+    "backstage.io/kubernetes-id": super-cool-backend
+    "backstage.io/kubernetes-label-selector": app=super-cool-backend
+    "backstage.io/kubernetes-namespace": default
+  tags:
+    - backend
+spec:
+  type: service
+  lifecycle: experimental
+  owner: toast-infra
+  system: cool-system
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kind-of-cool-frontend
+  description: Not as cool frontend.
+  annotations:
+    "backstage.io/kubernetes-id": super-cool-backend
+    "backstage.io/kubernetes-label-selector": app=super-cool-backend
+    "backstage.io/kubernetes-namespace": default
+  tags:
+    - frontend
+spec:
+  type: website
+  lifecycle: experimental
+  owner: toast-infra
+  dependsOn: [super-cool-backend]
+  system: cool-system
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: cool-system
+  description: pretty cool system
+spec:
+  owner: toast-infra
