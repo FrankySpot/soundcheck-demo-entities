@@ -10,13 +10,15 @@ metadata:
 spec:
   type: website
   lifecycle: production
-  owner: toast-infra
+  owner: group:default/toast-infra
   system: soundcheck
+dependsOn:
+  - component:default/soundcheck-backend
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: soundcheck-reporter-frontend
+  name: soundcheck-reporter
   description: Frontend website for soundcheck reporter.
   annotations:
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
@@ -25,8 +27,10 @@ metadata:
 spec:
   type: website
   lifecycle: production
-  owner: toast-infra
+  owner: group:default/toast-infra
   system: soundcheck
+dependsOn:
+  - component:default/soundcheck-feedback-backend
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -40,5 +44,7 @@ metadata:
 spec:
   type: website
   lifecycle: experimental
-  owner: toast-infra
+  owner: group:default/toast-infra
   system: soundcheck
+dependsOn:
+  - component:default/soundcheck-hackweek-service
