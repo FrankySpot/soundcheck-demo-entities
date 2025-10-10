@@ -12,8 +12,8 @@ spec:
   lifecycle: production
   owner: group:default/toast-infra
   system: soundcheck
-dependsOn:
-  - component:default/soundcheck-backend
+  dependencyOf:
+    - component:default/soundcheck-backend
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -29,5 +29,18 @@ spec:
   lifecycle: production
   owner: group:default/toast-infra
   system: soundcheck
-dependsOn:
-  - component:default/soundcheck-feedback-backend
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: soundcheck-hackweek-frontend
+  description: Frontend website for soundcheck hackweek.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - react
+spec:
+  type: website
+  lifecycle: experimental
+  owner: group:default/toast-infra
+  system: soundcheck
