@@ -1,17 +1,101 @@
 apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: soundcheck-system
+  description: System for soundcheck.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+spec:
+  owner: toast-infra
+---
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: super-cool-backend
-  description: A super cool and totally not fake backend system.
+  name: soundcheck-backend
+  description: Backend system running soundcheck.
   annotations:
-    "backstage.io/kubernetes-id": super-cool-backend
-    "backstage.io/kubernetes-label-selector": app=super-cool-backend
-    "backstage.io/kubernetes-namespace": default
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
   tags:
     - backend
+    - node
 spec:
   type: service
   lifecycle: production
   owner: toast-infra
-  system: cool-system
+  system: soundcheck
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: soundcheck-bridge
+  description: Bridge for converting soundcheck data.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - backend
+    - node
+spec:
+  type: service
+  lifecycle: production
+  owner: toast-infra
+  system: soundcheck
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: soundcheck-feedback-backend
+  description: Backend service for reporting soundcheck feedback.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - backend
+    - node
+spec:
+  type: service
+  lifecycle: production
+  owner: toast-infra
+  system: soundcheck
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: soundcheck-feedback-backend
+  description: Backend service to report soundcheck backend.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - backend
+    - node
+spec:
+  type: service
+  lifecycle: production
+  owner: toast-infra
+  system: soundcheck
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: soundcheck-hackweek-service
+  description: Service for hacking on soundcheck.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - backend
+    - node
+spec:
+  type: service
+  lifecycle: experimental
+  owner: toast-infra
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: soundcheck-database
+  description: Database for soundcheck.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+spec:
+  type: database
+  lifecycle: production
+  owner: toast-infra
+  system: soundcheck

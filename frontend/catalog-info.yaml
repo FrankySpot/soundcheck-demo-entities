@@ -1,17 +1,44 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: kind-of-cool-frontend
-  description: Not as cool frontend.
+  name: soundcheck-frontend
+  description: Frontend website for soundcheck.
   annotations:
-    "backstage.io/kubernetes-id": kind-of-cool-frontend
-    "backstage.io/kubernetes-label-selector": app=kind-of-cool-frontend
-    "backstage.io/kubernetes-namespace": default
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
   tags:
-    - frontend
+    - react
 spec:
   type: website
   lifecycle: production
   owner: toast-infra
-  system: cool-system
+  system: soundcheck
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: soundcheck-reporter-frontend
+  description: Frontend website for soundcheck reporter.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - react
+spec:
+  type: website
+  lifecycle: production
+  owner: toast-infra
+  system: soundcheck
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: soundcheck-hackweek-frontend
+  description: Frontend website for soundcheck hackweek.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - react
+spec:
+  type: website
+  lifecycle: experimental
+  owner: toast-infra
+  system: soundcheck
