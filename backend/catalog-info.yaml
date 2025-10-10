@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
-  name: soundcheck-system
+  name: soundcheck
   description: System for soundcheck.
   annotations:
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
