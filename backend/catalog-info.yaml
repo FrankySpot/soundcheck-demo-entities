@@ -43,8 +43,8 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: soundcheck-feedback-backend
-  description: Backend service for reporting soundcheck feedback.
+  name: soundcheck-worker
+  description: Workers for running scheduled tasks.
   annotations:
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
   tags:
@@ -60,7 +60,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: soundcheck-feedback-backend
-  description: Backend service to report soundcheck backend.
+  description: Backend service for reporting soundcheck feedback.
   annotations:
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
   tags:
