@@ -15,6 +15,7 @@ metadata:
   description: Backend system running soundcheck.
   annotations:
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
+    pagerduty.com/service-id: soundcheck-backend
   tags:
     - backend
     - node
