@@ -1,18 +1,18 @@
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
-  name: aika
-  description: System for aika.
+  name: data-registry
+  description: System for data-registry.
   annotations:
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
 spec:
-  owner: group:default/ai-knowledge-assistance
+  owner: group:default/datanaut
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: aika-backend
-  description: Backend system running aika.
+  name: data-registry-backend
+  description: Backend system running data-registry.
   annotations:
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
   tags:
@@ -21,36 +21,36 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: group:default/ai-knowledge-assistance
-  system: aika
+  owner: group:default/datanaut
+  system: data-registry
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: aika-database
-  description: Database for aika.
+  name: data-registry-database
+  description: Database for data-registry.
   annotations:
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
 spec:
   type: database
   lifecycle: production
-  owner: group:default/ai-knowledge-assistance
-  system: aika
+  owner: group:default/datanaut
+  system: data-registry
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: aika-frontend
-  description: Frontend website for aika.
+  name: data-registry-frontend
+  description: Frontend website for data registry.
   annotations:
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
-    pagerduty.com/service-id: aika-frontend
+    pagerduty.com/service-id: data-registry-frontend
   tags:
     - react
 spec:
   type: website
   lifecycle: production
-  owner: group:default/ai-knowledge-assistance
-  system: aika
+  owner: group:default/datanaut
+  system: data-registry
   dependencyOf:
-    - component:default/aika-backend
+    - component:default/data-registry-backend
