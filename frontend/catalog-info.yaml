@@ -5,6 +5,7 @@ metadata:
   description: Frontend website for soundcheck.
   annotations:
     github.com/project-slug: FrankySpot/soundcheck-demo-entities
+    pagerduty.com/service-id: soundcheck-frontend
   tags:
     - react
 spec:
