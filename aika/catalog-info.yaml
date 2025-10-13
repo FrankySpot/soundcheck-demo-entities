@@ -1,0 +1,56 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: aika
+  description: System for aika.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+spec:
+  owner: group:default/ai-knowledge-assistance
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: aika-backend
+  description: Backend system running aika.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - backend
+    - node
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/ai-knowledge-assistance
+  system: aika
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: aika-database
+  description: Database for aika.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+spec:
+  type: database
+  lifecycle: production
+  owner: group:default/ai-knowledge-assistance
+  system: soundcheck
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: aika-frontend
+  description: Frontend website for aika.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+    pagerduty.com/service-id: aika-frontend
+  tags:
+    - react
+spec:
+  type: website
+  lifecycle: production
+  owner: group:default/ai-knowledge-assistance
+  system: aika
+  dependencyOf:
+    - component:default/aika-backend
