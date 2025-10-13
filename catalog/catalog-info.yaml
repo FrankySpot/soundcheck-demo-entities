@@ -1,0 +1,109 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: catalog
+  description: System for catalog.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+spec:
+  owner: group:default/chipmunks
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: catalog-backend
+  description: Backend system running catalog.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - backend
+    - node
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/chipmunks
+  system: catalog
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: catalog-worker
+  description: Backend system running catalog jobs.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - node
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/chipmunks
+  system: catalog
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: catalog-database
+  description: Database for catalog.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+spec:
+  type: database
+  lifecycle: production
+  owner: group:default/chipmunks
+  system: catalog
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: catalog-frontend
+  description: Frontend website for catalog.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+    pagerduty.com/service-id: catalog-frontend
+  tags:
+    - react
+spec:
+  type: website
+  lifecycle: production
+  owner: group:default/chipmunks
+  system: catalog
+  dependencyOf:
+    - component:default/catalog-backend
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: catalog-hacking
+  description: hacking for catalog.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+  tags:
+    - react
+spec:
+  type: website
+  lifecycle: experimental
+  owner: group:default/chipmunks
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: infrastructure
+  description: System for backstage infrastructure.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+spec:
+  owner: group:default/chipmunks
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: infra-worker
+  description: Backend system running catalog infra.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+    pagerduty.com/service-id: infrastructure
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/chipmunks
+  system: infrastructure
