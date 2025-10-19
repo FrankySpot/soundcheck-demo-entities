@@ -22,3 +22,15 @@ spec:
   type: service
   lifecycle: production
   owner: group:default/imaginary-goats
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: alerts
+  description: observability.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/imaginary-goats
