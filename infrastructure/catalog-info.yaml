@@ -1,0 +1,24 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fleet
+  description: fleet of instances.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+    pagerduty.com/service-id: infra
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/imaginary-goats
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: monitoring
+  description: observability.
+  annotations:
+    github.com/project-slug: FrankySpot/soundcheck-demo-entities
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/imaginary-goats
