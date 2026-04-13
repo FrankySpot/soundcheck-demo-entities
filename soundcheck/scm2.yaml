@@ -9,7 +9,7 @@ filter:
 exclude:
   spec.type:
     - documentation
-batchSize: 2
+batchSize: 10
 collects:
   - factName: "openapi-specification"
     type: "regex"
@@ -19,7 +19,7 @@ collects:
     filter:
       - metadata.tags: ["lang:java"]
     frequency:
-      hours: 12
+      hours: 2
     cache:
       duration:
         hours: 24
