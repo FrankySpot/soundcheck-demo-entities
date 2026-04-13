@@ -1,0 +1,34 @@
+---
+- id: is-resource
+  ownerEntityRef: group:default/toast-infra
+  name: Is Resource
+  description: Ensures the component is a resource
+  rule:
+    factRef: catalog:default/entity_descriptor
+    path: $.spec.kind
+    operator: equal
+    value: resource
+  passedMessage: Component is resource.
+  failedMessage: Component is NOT resource.
+  filter:
+    kind:
+      - component
+      - resource
+- id: has-production-lifecycle
+  ownerEntityRef: group:default/toast-infra
+  name: Has Production Lifecycle
+  description: Ensures the component has a production lifecycle.
+  rule:
+    factRef: catalog:default/entity_descriptor
+    path: $.spec.lifecycle
+    operator: equal
+    value: production
+  passedMessage: Component has a production lifecycle.
+  failedMessage: Component does not have a production lifecycle.
+  schedule:
+    frequency:
+      hours: 1
+    filter:
+      kind: Component
+  filter:
+    kind: Component

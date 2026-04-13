@@ -1,0 +1,16 @@
+---
+id: is-component
+ownerEntityRef: group:default/toast-infra
+name: Is Component
+description: Ensures the component is a component
+rule:
+  factRef: catalog:default/entity_descriptor
+  path: $.spec.kind
+  operator: equal
+  value: component
+passedMessage: Component is Component.
+failedMessage: Component is NOT component.
+filter:
+  kind:
+    - component
+    - resource

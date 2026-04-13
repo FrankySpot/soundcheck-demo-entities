@@ -1,3 +1,4 @@
+---
 frequency:
   cron: "0 * * * *"
 initialDelay:
