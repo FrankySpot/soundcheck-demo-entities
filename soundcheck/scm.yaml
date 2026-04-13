@@ -1,0 +1,13 @@
+frequency:
+  hours: 1
+filter:
+  kind: component
+cache:
+  duration:
+    days: 1
+collects:
+  - factName: file_exists
+    type: exists
+    data:
+      - name: readme
+        path: /README.md
