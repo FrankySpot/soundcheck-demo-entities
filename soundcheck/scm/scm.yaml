@@ -1,0 +1,14 @@
+---
+frequency:
+  hours: 3
+filter:
+  kind: component
+cache:
+  duration:
+    days: 1
+collects:
+  - factName: file_exists_claude
+    type: exists
+    data:
+      - name: claude
+        path: /CLAUDE.md

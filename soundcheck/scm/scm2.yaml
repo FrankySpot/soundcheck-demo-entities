@@ -1,0 +1,27 @@
+---
+frequency:
+  cron: "0 * * * *"
+initialDelay:
+  minutes: 30
+filter:
+  kind: Component
+  spec.lifecycle: production
+exclude:
+  spec.type:
+    - documentation
+batchSize: 10
+collects:
+  - factName: "openapi-specification"
+    type: "regex"
+    path: "**/src/main/resources/**/openapi.yml"
+    regex: '^openapi:\s*["'']?\d+\.\d+\.\d+["'']?'
+    flags: mi
+    filter:
+      - metadata.tags: ["lang:java"]
+    frequency:
+      hours: 2
+    cache:
+      duration:
+        hours: 24
+    initialDelay:
+      seconds: 41
