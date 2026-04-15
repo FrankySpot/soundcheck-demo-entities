@@ -1,0 +1,17 @@
+- id: production-lifecycle-track-remote-new-check-3
+  name: Ensure Lifecycle Production Set Track THIRD
+  ownerEntityRef: group:default/toast-infra
+  description: >
+    Example Track - Ensure all components have a production lifecycle defined in their
+    catalog-info.yaml to indicate production readiness.
+  filter:
+    kind:
+      - component
+      - resource
+  levels:
+    - checks:
+        - id: has-production-lifecycle
+          name: Has Production Lifecycle
+          description: >
+            Verifies that the component has a production lifecycle defined
+            in its catalog-info.yaml.
