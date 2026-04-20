@@ -1,6 +1,6 @@
 ---
 frequency:
-  hours: 3
+  hours: 2
 filter:
   kind: component
 cache:
