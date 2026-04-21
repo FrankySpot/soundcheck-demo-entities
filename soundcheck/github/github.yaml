@@ -1,0 +1,17 @@
+frequency:
+  cron: '0 0 * * *'
+initialDelay:
+  hours: 12
+filter:
+  - kind: Component
+    spec.lifecycle: production
+    metadata.annotations.k8s_type: [service]
+exclude:
+  - spec.type: [database]
+cache:
+  duration:
+    hours: 2
+batchSize: 2
+collects:
+  - factName: branch_protections
+    type: BranchProtections

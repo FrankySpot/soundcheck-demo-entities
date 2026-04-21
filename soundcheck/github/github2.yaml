@@ -1,0 +1,28 @@
+frequency:
+  hours: 2
+initialDelay:
+  hours: 6
+filter:
+  - kind: Component
+    spec.lifecycle: production
+batchSize: 5
+collects:
+  - factName: branch_rules
+    type: BranchRules
+    filter:
+      - kind:
+          - component
+    frequency:
+      cron: "0 3 * * *"
+  - factName: critical_vulnerabilities
+    type: DependabotAlerts
+    states:
+      - open
+    severities:
+      - critical
+    filter:
+      - kind:
+          - component
+    cache:
+      duration:
+        hours: 24
