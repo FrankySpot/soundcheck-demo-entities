@@ -1,0 +1,308 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: soundcheck-test-service
+  description: test service for k8s
+  tags:
+    - k8s
+  annotations:
+    backstage.io/kubernetes-id: soundcheck-test-service
+    sonarqube.org/project-key: rws-hello-world-example
+    atlassian.net/jql: project=TOAST
+  labels:
+    k8s_type: service
+    version: '8.1.1'
+    test.com/criticality: medium
+spec:
+  type: service
+  lifecycle: production
+  owner: toast-infra
+  dependsOn:
+    - resource:default/gke-test-cluster-1
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: test-service
+  description: a test service
+spec:
+  type: service
+  lifecycle: production
+  owner: toast-infra
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: gke-test-cluster-1
+  description: some test cluster
+  tags:
+    - k8s
+  annotations:
+    kubernetes.io/api-server: 'https://34.134.113.248'
+    kubernetes.io/api-server-certificate-authority: test
+    kubernetes.io/auth-provider: 'google'
+    kubernetes.io/skip-metrics-lookup: 'true'
+    kubernetes.io/skip-tls-verify: 'true'
+  labels:
+    k8s_type: cluster
+spec:
+  type: kubernetes-cluster
+  lifecycle: production
+  owner: toast-infra
+  system: k8s-main
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: soundcheck-test-service-label
+  description: test service for k8s
+  tags:
+    - k8s
+  annotations:
+    backstage.io/kubernetes-label-selector: app=soundcheck-test-service
+    backstage.io/kubernetes-cluster: gke-test-cluster-1
+    sonarqube.org/project-key: dpe:backstage
+spec:
+  type: service
+  lifecycle: production
+  owner: toast-infra
+  system: k8s-main
+  trackedDependencies:
+    - name: com.cvent.common-dropwizard
+      version: 8.1.2
+    - name: com.cvent.test-something
+      version: 8.5.3
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: warm-final
+  description: repurpose compelling web services
+spec:
+  type: team
+  profile:
+    displayName: Warm Final
+    email: test@email.com
+  parent: platform
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: notification-test
+  description: test for notification emails
+spec:
+  type: team
+  profile:
+    displayName: Notification Test
+    email: notifications@spotify.com
+  parent: platform
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: portellir
+  annotations:
+    'github.com/user-login': portellir
+    'ghe.spotify.net/user-login': rebeccap
+spec:
+  profile:
+    displayName: Rebecca Portelli
+    email: rebeccap@spotify.com
+    picture: https://avatars.githubusercontent.com/u/32908859
+  memberOf: [toast-infra, rbac-admins, notification-test]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  annotations:
+    pagerduty.com/escalation-policy-id: PO1KALF
+    sonarqube.org/project-key: paygo-provisioning-service
+    mend.io/project-token: 8905baa453344eb5a509d4f925d00242467d45cdfda942b98e8a202503c43b58
+    mend.io/project-id: '9085389'
+    git-repository-url: https://stash.cvent.net/projects/CSN/repos/csn-signup-ui/browse
+    bitbucket.org/project-slug: CSN/csn-signup-ui
+    backstage.io/managed-by-location: url:https://stash.cvent.net/projects/CSN/repos/csn-signup-ui/browse/catalog-info.yaml
+    backstage.io/managed-by-origin-location: url:https://stash.cvent.net/projects/CSN/repos/csn-signup-ui/browse/catalog-info.yaml
+    backstage.io/view-url: https://stash.cvent.net/projects/CSN/repos/csn-signup-ui/browse/catalog-info.yaml
+    backstage.io/edit-url: https://stash.cvent.net/projects/CSN/repos/csn-signup-ui/browse/catalog-info.yaml
+    backstage.io/source-location: url:https://stash.cvent.net/projects/CSN/repos/csn-signup-ui/browse/
+    backstage.io/techdocs-ref: dir:.
+    datadoghq.com/service-name: paygo-provisioning-service
+    datadoghq.com/application-id: e38265b5-8854-4329-8f0e-6b7573e1eb4a
+  namespace: default
+  name: csn-signup-ui
+  title: csn-signup-ui
+  description: CSN Sign Up UI for Planners
+  links:
+    - title: Wiki
+      url: https://wiki.cvent.com/display/DEV/CSN+Planner+Account+Signup+Redesign
+      icon: help
+    - title: Api
+      url: https://wiki.cvent.com/display/DEV/CSN+Planner+Account+Signup+Redesign
+      icon: docs
+  source: bitbucket
+  labels:
+    business-unit: hospitality
+    platform: csn
+    product: planner-rfp-workflow
+  uid: 1d3c4d97-4965-487e-a274-ce26fe99c5f3
+  etag: b1fd252a2f0240f3e82db72fd5353664c4e05503
+spec:
+  system: planner-rfp-workflow
+  type: application
+  lifecycle: active
+  owner: pixel
+  trackedDependencies:
+    - name: '@cvent/carina-tokens'
+      version: 3.2.6
+    - name: '@cvent/nucleus-datatag-regex'
+      version: 0.1.11
+    - name: '@cvent/carina'
+      version: 1.147.1
+    - name: '@cvent/nucleus-test-automation'
+      version: 2.3.2
+    - name: '@cvent/nucleus-networking'
+      version: 1.5.17
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  namespace: default
+  annotations:
+    qeportal/project-key: guest-calendar-ui
+    pagerduty.com/escalation-policy-id: P0FZOJI
+    sonarqube.org/project-key: guest-calendar-ui
+    mend.io/project-token: 16e2397d3bfd4d12ad8e2ff977779ee2b4a5d9e1d82b4c738c686db7120dc29d
+    mend.io/project-id: '15790034'
+    octopus.com/project-slug: guest-calendar-ui
+    git-repository-url: https://github.com/cvent-internal/calendar-microapps
+    github.com/project-slug: cvent-internal/calendar-microapps
+    backstage.io/managed-by-location: url:https://github.com/cvent-internal/calendar-microapps/tree/main/packages/guest-calendar-ui/catalog-info.yaml
+    backstage.io/managed-by-origin-location: url:https://github.com/cvent-internal/calendar-microapps/tree/main/packages/guest-calendar-ui/catalog-info.yaml
+    backstage.io/view-url: https://github.com/cvent-internal/calendar-microapps/tree/main/packages/guest-calendar-ui/catalog-info.yaml
+    backstage.io/edit-url: https://github.com/cvent-internal/calendar-microapps/tree/main/packages/guest-calendar-ui/catalog-info.yaml
+    backstage.io/source-location: url:https://github.com/cvent-internal/calendar-microapps/tree/main/packages/guest-calendar-ui/
+    framework.cvent.com/language: TypeScript
+    datadoghq.com/service-name: guest-calendar-ui
+    backstage.io/techdocs-ref: dir:./docs
+    hogan-templates/directory: app
+    hogan-templates/regex: ^(.env|.env\.development|.env\.production|.env\.template)$
+    framework.cvent.com/type: cdf-webapp
+    datadoghq.com/application-id: b1a607d6-3cd2-4cd5-80bd-8c9d57b74107
+    service-registry-id: 88227b1e-57bb-55ab-bac2-e2af38163b0a
+  name: guest-calendar-ui
+  title: guest-calendar-ui
+  description: >
+    A CDF-based event calendar following microapp patterns. Focused on
+    guest-side features for now, may extend to planner-side later.
+  labels:
+    business-unit: event
+    platform: event-management
+    product: shared
+  tags:
+    - webapp
+    - microapp
+  links:
+    - title: Business requirements
+      url: https://wiki.cvent.com/x/2KMdJg
+      icon: help
+    - title: Initial design
+      url: https://wiki.cvent.com/x/DSr1KQ
+      icon: help
+    - title: Datadog
+      url: https://cvent.datadoghq.com/services?selectedService=guest-calendar-ui
+      icon: catalog
+      type: datadog
+  source: github
+  uid: c04db844-a728-4bd7-a809-11d034202a69
+  etag: 105d0e7ae63fbd60e9780b9d70ad1dae6607701c
+spec:
+  system: event-management
+  type: application
+  lifecycle: active
+  owner: pixel
+  environments:
+    - name: sg50
+      account: cvent-development
+      region: us-east-1
+      type: staging
+    - name: ld50
+      account: cvent-development
+      region: us-east-1
+      type: load
+    - name: pr50
+      account: cvent-production
+      region: us-east-1
+      type: production
+    - name: pr51
+      account: cvent-production
+      region: us-west-2
+      type: production
+    - name: PR53
+      account: core-app-prod
+      region: eu-west-1
+      type: production
+    - name: PR54
+      account: core-app-prod
+      region: eu-central-1
+      type: production
+  trackedDependencies:
+    - name: '@cvent/wdio-configs'
+      version: 1.1.21
+    - name: '@cvent/lighthouse-utils'
+      version: 6.1.1
+    - name: '@cvent/cdk-applications'
+      version: 1.35.4
+    - name: '@cvent/app-config'
+      version: 3.0.10
+    - name: '@cvent/carina'
+      version: 2.42.5
+    - name: '@cvent/auth-client'
+      version: 5.0.2
+    - name: '@cvent/logging'
+      version: 2.0.17
+    - name: '@cvent/hogan-client'
+      version: 2.1.1
+    - name: '@cvent/jest-config'
+      version: 1.2.2
+    - name: '@cvent/cdk-lib'
+      version: 1.25.4
+    - name: '@cvent/fetch'
+      version: 2.1.5
+    - name: '@cvent/tsconfig'
+      version: 1.2.5
+    - name: '@cvent/guest-calendar-ui-shared'
+      version: 2.1.17
+    - name: '@cvent/guest-calendar-ui'
+      version: 2.2.27
+    - name: '@cvent/e2e-utils'
+      version: 1.1.8
+    - name: '@cvent/environments'
+      version: 1.34.16
+    - name: '@cvent/guest-calendar-ui-model'
+      version: 2.2.4
+    - name: '@cvent/guest-calendar-ui-it'
+      version: 2.2.6
+    - name: '@cvent/guest-calendar-ui-infra'
+      version: 2.1.7
+    - name: '@cvent/guest-calendar-ui-e2e'
+      version: 2.1.8
+  authApps:
+    - appId: 7823
+      environment: staging
+    - appId: 7888
+      environment: production
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: pixel
+  description: pixel group
+spec:
+  type: team
+  profile:
+    displayName: Pixel
+  parent: platform
+  children: []
